@@ -1,5 +1,4 @@
 
-```markdown
 # AegisLedger 💸
 
 **AI-Powered Finance Tracker** | *Take control of your money with voice-driven AI insights*
