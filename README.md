@@ -3,9 +3,6 @@
 
 **AI-Powered Finance Tracker** | *Take control of your money with voice-driven AI insights*
 
-![Demo](https://via.placeholder.com/800x400.png?text=AegisLedger+Demo+Video+or+GIF) 
-*[Replace with your demo video/gif]*
-
 ---
 
 ## Features ✨
