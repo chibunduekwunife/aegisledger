@@ -1,4 +1,3 @@
-Here’s a polished `README.md` for your **AegisLedger** project, designed to showcase its features, tech stack, and social presence while encouraging contributions:
 
 ```markdown
 # AegisLedger 💸
