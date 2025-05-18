@@ -145,7 +145,7 @@ MIT License. See [LICENSE](LICENSE).
 
 Built with ❤️ by [Your Name](https://github.com/yourusername).  
 **Let’s make finance tracking effortless!** 💰
-```
+
 
 ---
 
