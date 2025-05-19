@@ -1,16 +1,15 @@
-import AegisLogo from "@/components/ui/logo";
+import { CardFeaturesSection } from "./features";
+import HeroSection from "./hero";
 
 export default function HomePage() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
-      <div className="flex flex-col items-center gap-3">
-        <AegisLogo />
-        <div className="flex items-center gap-2">
-          <p className="text-xl text-gray-400 italic">
-            Financially Guarded by AI, Empowered by You</p> 
-            🛡️
-        </div>
+
+      {/* entire app screen */}
+      <div className="flex flex-col gap-y-10 max-w-[85%] md:max-w-[70%]">
+        <HeroSection />
+        <CardFeaturesSection />
       </div>
     </div>
   );
