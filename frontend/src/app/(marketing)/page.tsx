@@ -7,7 +7,7 @@ export default function HomePage() {
     <div className="flex flex-col items-center justify-center min-h-screen">
 
       {/* entire app screen */}
-      <div className="flex flex-col gap-y-10 max-w-[85%] md:max-w-[70%]">
+      <div className="flex flex-col gap-y-10 max-w-[85%] md:max-w-[70%] my-15 md:my-20">
         <HeroSection />
         <CardFeaturesSection />
       </div>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 
 import {
     Carousel,
@@ -15,19 +16,13 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
-
-import {
-    MicrophoneIcon,
-    BellAlertIcon,
-    BoltIcon,
-    ShieldCheckIcon
-} from '@heroicons/react/24/solid'
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
 interface FeatureProps {
     id: number;
     title: string;
-    icon: React.ElementType;
     description: string;
+    imageSrc: string | StaticImport;
     content?: string;
     footer?: string;
 }
@@ -36,8 +31,24 @@ const features: FeatureProps[] = [
     {
         id: 1,
         title: "Speak or Type Transactions",
-        icon: MicrophoneIcon,
-        description: "Log expenses naturally through voice or text"
+        description: "Log expenses naturally through voice or text",
+        imageSrc: "/images/credit-card.svg"
+    },
+    {
+        id: 2,
+        title: "Real-Time Budget Alerts",
+        description: "Stay on track with intelligent notifications",
+        imageSrc: "/images/inbox.svg"
+    }, {
+        id: 3,
+        title: "AI-Powered Insights",
+        description: "Get personalized financial recommendations",
+        imageSrc: "/images/data-trends.svg"
+    },{
+        id: 4,
+        title: "Bank-Grade Security",
+        description: "Your data is encrypted and secure",
+        imageSrc: "/images/enter-password.svg"
     }
 ]
 
@@ -59,24 +70,22 @@ export function CarouselFeaturesSection() {
 
 export function CardFeaturesSection() {
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-center">
             {features.map(feature => {
-                const Icon = feature.icon;
+                
                 return (
                     <Card key={feature.id}>
+                        <CardContent className="flex justify-center items-center">
+                            <Image
+                                src={feature.imageSrc}
+                                width={100}
+                                height={100}
+                                alt={feature.title}/>
+                        </CardContent>
                         <CardHeader>
-                            <div className="flex items-center">
-                                <Icon className="size-6"/>
-                                <CardTitle>{feature.title}</CardTitle>
-                            </div>
+                            <CardTitle>{feature.title}</CardTitle>
                             <CardDescription>{feature.description}</CardDescription>
                         </CardHeader>
-                        <CardContent>
-                            <p>Card Content</p>
-                        </CardContent>
-                        <CardFooter>
-                            <p>Card Footer</p>
-                        </CardFooter>
                     </Card>
                 )
             })}
