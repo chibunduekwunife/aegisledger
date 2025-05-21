@@ -34,7 +34,7 @@ const tiers = [
 
 export default function PricingSection() {
     return (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-full">
             {tiers.map(tier => (
                 <Card
                     key={tier.id}
@@ -51,7 +51,7 @@ export default function PricingSection() {
                         </div>
                         <ul className="space-y-2 text-center">
                             {tier.perks.map(perk => (
-                                <li>{perk}</li>
+                                <li key={perk}>{perk}</li>
                             ))}
                         </ul>
                     </CardContent>

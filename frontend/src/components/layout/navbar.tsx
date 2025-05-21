@@ -9,7 +9,7 @@ export function MarketingNavbar() {
             <div className='flex gap-2'>
                 <Link
                     className={buttonVariants({variant: "outline"})}
-                    href={'/login'}>
+                    href={'/signup'}>
                     Create Account
                 </Link>
                 <Link
