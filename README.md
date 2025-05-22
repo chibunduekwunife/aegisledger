@@ -23,7 +23,7 @@
 
 | **Frontend**       | **Backend**          | **AI/APIs**               | **Database**      | **Tools**         |
 |--------------------|----------------------|---------------------------|-------------------|-------------------|
-| Next.js 14         | Django 4.2           | OpenAI GPT-4/Whisper      | PostgreSQL        | Docker            |
+| Next.js 14         | Django 4.2           | OpenAI GPT-4/Whisper      | SQLite3        | Docker            |
 | TypeScript         | Django REST Framework| OpenWeatherMap (optional) |                   | Tailwind CSS      |
 | Chart.js           | Celery (async tasks) |                           |                   | Vercel/Heroku     |
 
@@ -34,7 +34,7 @@
 ### Prerequisites
 - Node.js 18+, Python 3.10+
 - OpenAI API key ([Get here](https://platform.openai.com/))
-- PostgreSQL
+- SQLite3
 
 ### Installation
 
