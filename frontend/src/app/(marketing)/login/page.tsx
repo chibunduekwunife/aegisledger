@@ -1,6 +1,6 @@
 import { GalleryVerticalEnd } from "lucide-react"
 import Link from 'next/link'
-import { LoginForm } from "@/components/login-form"
+import { AuthForm } from "@/components/auth-form"
 
 export default function LoginPage() {
   return (
@@ -12,7 +12,7 @@ export default function LoginPage() {
           </div>
           AEGIS LEDGER
         </Link>
-        <LoginForm />
+        <AuthForm method="login"/>
       </div>
     </div>
   )
