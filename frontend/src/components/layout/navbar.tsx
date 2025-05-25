@@ -20,6 +20,10 @@ export function Navbar({ isAuthorized, username }: NavbarProps) {
         router.replace('/login');
     }
 
+    const clearTokens = () => {
+        localStorage.clear();
+    }
+
     return (
         <nav className='flex items-center justify-between sticky top-0 p-5 bg-secondary'>
             <AegisLogo link={isAuthorized ? '/dashboard' : '/'} size={2} />
@@ -29,6 +33,7 @@ export function Navbar({ isAuthorized, username }: NavbarProps) {
                         {`Welcome, ${username}!`}
                     </p>
                     <Button
+                        className='cursor-pointer'
                         onClick={handleLogout}>
                         Logout
                     </Button>
@@ -37,7 +42,8 @@ export function Navbar({ isAuthorized, username }: NavbarProps) {
                 <div className='flex gap-2'>
                     <Link
                         className={buttonVariants({ variant: "outline" })}
-                        href={'/register'}>
+                        href={'/register'}
+                        onClick={clearTokens}>
                         Create Account
                     </Link>
                     <Link
