@@ -31,8 +31,8 @@ export function AuthForm({
   ...props
 }: AuthFormProps) {
 
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const [identifier, setIdentifier] = useState(""); // email for register, email/username for login
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false)
   const router = useRouter()
 
@@ -47,7 +47,13 @@ export function AuthForm({
     }
 
     try {
-      const res = await api.post(route, {email, password})
+      let payload;
+      if (method === 'login') {
+        payload = { username: identifier, password };
+      } else {
+        payload = { email: identifier, password };
+      }
+      const res = await api.post(route, payload)
 
       if (method === 'login'){
         localStorage.setItem(ACCESS_TOKEN, res.data.access)
@@ -107,13 +113,15 @@ export function AuthForm({
               </div>
               <div className="grid gap-6">
                 <div className="grid gap-3">
-                  <Label htmlFor="email">Email</Label>
+                  <Label htmlFor="identifier">
+                    {method === 'login' ? 'Email or Username' : 'Email (used as username)'}
+                  </Label>
                   <Input
-                    id="email"
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="m@example.com"
+                    id="identifier"
+                    type={method === 'login' ? 'text' : 'email'}
+                    value={identifier}
+                    onChange={(e) => setIdentifier(e.target.value)}
+                    placeholder={method === 'login' ? 'Enter your email or username' : 'Enter your email (will be your username)'}
                     required
                   />
                 </div>
@@ -144,7 +152,7 @@ export function AuthForm({
               </div>
               {method === 'login' ? <div className="text-center text-sm">
                 Don&apos;t have an account?{" "}
-                <Link href="/signup" className="underline underline-offset-4">
+                <Link href="/register" className="underline underline-offset-4">
                   Sign up
                 </Link>
               </div> : <div className="text-center text-sm">

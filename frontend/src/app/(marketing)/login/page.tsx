@@ -12,7 +12,7 @@ export default function LoginPage() {
           </div>
           AEGIS LEDGER
         </Link>
-        <AuthForm method="login"/>
+        <AuthForm route="/api/token/" method="login"/>
       </div>
     </div>
   )

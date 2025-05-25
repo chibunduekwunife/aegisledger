@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { MarketingNavbar } from "@/components/layout/navbar";
 import "./globals.css";
+import ProtectedRoute from "@/components/protected-route";
 
 export const metadata: Metadata = {
   title: "Aegis Ledger",
@@ -15,7 +15,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <MarketingNavbar />
         {children}
       </body>
     </html>

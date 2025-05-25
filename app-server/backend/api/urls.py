@@ -5,4 +5,5 @@ from . import views
 urlpatterns = [
     path("transactions/", views.TransactionListCreate.as_view(), name="transaction-list"),
     path("transactions/delete/<int:pk>/", views.TransactionDelete.as_view(), name="delete-transaction")
+    
 ]

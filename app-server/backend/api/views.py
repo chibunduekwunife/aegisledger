@@ -4,6 +4,8 @@ from rest_framework import generics
 from .serializers import UserSerializer, TransactionSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from .models import Transaction
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.response import Response
 
 # Create your views here.
 
@@ -37,3 +39,11 @@ class CreateUserView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
+
+# View: Get User
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def GetUserView(request):
+    user = request.user
+    return Response({'username': user.username})
