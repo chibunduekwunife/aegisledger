@@ -25,7 +25,7 @@ export function Navbar({ isAuthorized, username }: NavbarProps) {
     }
 
     return (
-        <nav className='flex items-center justify-between sticky top-0 p-5 bg-secondary'>
+        <nav className='flex items-center justify-between sticky top-0 p-5 bg-secondary shadow-md'>
             <AegisLogo link={isAuthorized ? '/dashboard' : '/'} size={2} />
             {isAuthorized ? (
                 <div className='flex gap-5 items-center'>

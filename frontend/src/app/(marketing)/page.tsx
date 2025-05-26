@@ -1,7 +1,7 @@
-import DemoSection from "./demo";
-import { CardFeaturesSection } from "./features";
-import HeroSection from "./hero";
-import PricingSection from "./pricing";
+import DemoSection from "./components/demo";
+import { CardFeaturesSection } from "./components/features";
+import HeroSection from "./components/hero";
+import PricingSection from "./components/pricing";
 
 export default function HomePage() {
 

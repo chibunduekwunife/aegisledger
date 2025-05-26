@@ -1,8 +1,48 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import api from "@/api";
+import TransactionsSection from "./components/transactions";
+
 
 export default function DashboardPage() {
-    return(
-        <div className="p-5">
-            <h1 className="text-3xl">Dashboard</h1>
-        </div>
-    )
+  const [transactions, setTransactions] = useState([]);
+
+  useEffect(() => {
+    getTransactions();
+  }, []);
+
+  const getTransactions = () => {
+    api
+      .get("/api/transactions/")
+      .then((res) => res.data)
+      .then((data) => {
+        setTransactions(data);
+        console.log(data);
+      })
+      .catch((err) => alert(err));
+  };
+
+  const deleteTransaction = (id: string | number) => {
+    api
+      .delete(`/api/transactions/delete/${id}/`)
+      .then((res) => {
+        if (res.status === 204) {
+          alert("Transaction deleted!");
+          setTransactions((prev) =>
+            prev.filter((txn: { id: string | number }) => txn.id !== id)
+          );
+        } else {
+          alert("Failed to delete transaction");
+        }
+      })
+      .catch((err) => alert(err));
+  };
+
+  return (
+    <div className="p-5">
+      <TransactionsSection transactions={transactions} />
+      
+    </div>
+  );
 }
