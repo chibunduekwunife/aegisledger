@@ -82,3 +82,30 @@ export const testTransactions: Transaction[] = [
     note: "Weekend movie"
   }
 ];
+
+export const totalSpent = () => {
+
+  let total_spent = 0;
+  testTransactions.forEach(txn => {
+    if (txn.amount < 0) {
+      total_spent += txn.amount
+    }
+  })
+
+  return total_spent;
+}
+
+export const totalIncome = () => {
+  let total_income = 0
+  testTransactions.forEach(txn => {
+    if (txn.amount > 0) {
+      total_income += txn.amount
+    }
+  })
+
+  return total_income;
+}
+
+export const BudgetRemaining = (budget: number) => {
+  return budget + totalIncome() - Math.abs(totalSpent());
+}

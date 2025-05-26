@@ -30,7 +30,7 @@ export function Navbar({ isAuthorized, username }: NavbarProps) {
             {isAuthorized ? (
                 <div className='flex gap-5 items-center'>
                     <p className='hidden md:flex'>
-                        {`Welcome, ${username}!`}
+                        {username}
                     </p>
                     <Button
                         className='cursor-pointer'

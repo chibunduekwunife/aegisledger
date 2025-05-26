@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import api from "@/api";
 import TransactionsSection from "./components/transactions";
+import BalancesSection from "./components/balance-view";
 
 
 export default function DashboardPage() {
@@ -40,9 +41,9 @@ export default function DashboardPage() {
   };
 
   return (
-    <div className="p-5">
+    <div className="flex flex-col gap-3 p-5">
+      <BalancesSection/>
       <TransactionsSection transactions={transactions} />
-      
     </div>
   );
 }
