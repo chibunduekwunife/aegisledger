@@ -38,6 +38,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { cn } from "@/lib/utils";
 import { Calendar } from "@/components/ui/calendar";
 import { Textarea } from "@/components/ui/textarea";
+import { toast } from "sonner";
 
 const formSchema = z.object({
   name: z
@@ -81,7 +82,6 @@ export default function AddTransactionPage() {
     },
   });
 
-  const Toast = () => {};
 
   const createTransaction = (data: {
     name: string;
@@ -94,15 +94,17 @@ export default function AddTransactionPage() {
       .post("/api/transactions/", data)
       .then((res) => {
         if (res.status === 201) {
-          alert("Transaction created!");
+          toast("Transaction created!");
           router.replace("/dashboard");
         } else {
-          alert("Failed to create transaction");
+          toast("Failed to create transaction");
         }
       })
-      .catch((err) => alert(err));
-
-    Toast();
+      .catch((err) => {
+        toast("Uh oh! Something went wrong.", {
+          description: String(err),
+        });
+      });
   };
 
   return (
@@ -143,6 +145,7 @@ export default function AddTransactionPage() {
                       <FormLabel>Amount</FormLabel>
                       <FormControl>
                         <Input
+                          type="number"
                           placeholder="Enter a transaction amount"
                           {...field}
                         />

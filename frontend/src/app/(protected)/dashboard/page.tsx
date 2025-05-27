@@ -5,6 +5,7 @@ import api from "@/api";
 import TransactionsSection from "./components/transactions";
 import BalancesSection from "./components/balance-view";
 import DataSection from "./components/data-view";
+import { toast } from "sonner";
 
 
 export default function DashboardPage() {
@@ -22,7 +23,11 @@ export default function DashboardPage() {
         setTransactions(data);
         console.log(data);
       })
-      .catch((err) => alert(err));
+      .catch((err) => {
+        toast("Uh oh! Something went wrong.", {
+          description: String(err),
+        });
+      });
   };
 
   const deleteTransaction = (id: string | number) => {
@@ -30,15 +35,19 @@ export default function DashboardPage() {
       .delete(`/api/transactions/delete/${id}/`)
       .then((res) => {
         if (res.status === 204) {
-          alert("Transaction deleted!");
+          toast("Transaction deleted!");
           setTransactions((prev) =>
             prev.filter((txn: { id: string | number }) => txn.id !== id)
           );
         } else {
-          alert("Failed to delete transaction");
+          toast("Failed to delete transaction");
         }
       })
-      .catch((err) => alert(err));
+      .catch((err) => {
+        toast("Uh oh! Something went wrong.", {
+          description: String(err),
+        });
+      });
   };
 
   return (

@@ -16,6 +16,7 @@ import { useState } from "react"
 import api from "../../../api"
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "@/constants"
 import { useRouter } from 'next/navigation'
+import { toast } from "sonner"
 
 type AuthFormProps = React.ComponentProps<"div"> & {
   onSubmit?: (data: { email: string; password: string }) => void;
@@ -41,7 +42,7 @@ export function AuthForm({
     e.preventDefault();
 
     if (!route) {
-      alert("No route specified for authentication.");
+      toast("No route specified for authentication.");
       setLoading(false);
       return;
     }
@@ -64,7 +65,9 @@ export function AuthForm({
       }
       
     } catch (error) {
-      alert(error)
+      toast("Uh oh! Something went wrong.", {
+        description: String(error),
+      });
     } finally {
       setLoading(false)
     }
