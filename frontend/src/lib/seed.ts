@@ -1,3 +1,5 @@
+// this file can be deleted
+
 import type { Transaction } from "./types.ts"
 
 export const testTransactions: Transaction[] = [

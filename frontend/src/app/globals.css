@@ -136,5 +136,8 @@
   body {
     @apply bg-gray-50 text-foreground;
   }
+  button {
+    @apply cursor-pointer;
+  }
 }
 

@@ -33,7 +33,6 @@ export function Navbar({ isAuthorized, username }: NavbarProps) {
                         {username}
                     </p>
                     <Button
-                        className='cursor-pointer'
                         onClick={handleLogout}>
                         Logout
                     </Button>
