@@ -29,7 +29,7 @@ export default function BalancesSection() {
     <Card>
       <CardHeader>
         <CardTitle className="text-2xl">Hello, {username}!</CardTitle>
-        <CardDescription>Today's Financial Snapshot</CardDescription>
+        <CardTitle className="text-gray-500">Financial Overview</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -61,7 +61,7 @@ export default function BalancesSection() {
           </Card>
           <Card>
             <CardHeader>
-              <CardDescription>Remaining Budget</CardDescription>
+              <CardDescription>Net Savings</CardDescription>
               <CardTitle
                 className={clsx(
                   "text-2xl font-bold",
