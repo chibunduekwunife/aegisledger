@@ -16,7 +16,7 @@ import { PlusCircleIcon } from "lucide-react";
 import { BotIcon } from "lucide-react";
 
 interface TransactionsSectionProps {
-  transactions: Transaction[];
+  transactions?: Transaction[];
 }
 
 export default function TransactionsSection({
@@ -28,7 +28,7 @@ export default function TransactionsSection({
         <div className="flex items-center justify-between">
           <CardTitle className="text-gray-500">Recent Transactions</CardTitle>
           <Link
-            href="/all-transactions"
+            href="/dashboard/transactions"
             className={buttonVariants({ variant: "link" })}
           >
             View All
@@ -72,7 +72,7 @@ export default function TransactionsSection({
       </CardContent>
       <CardFooter className="flex justify-center md:justify-end gap-2">
         <Button asChild>
-          <Link href="/dashboard/add-transaction">
+          <Link href="/dashboard/transactions/add-transaction">
             <PlusCircleIcon />
             Add Transaction
           </Link>

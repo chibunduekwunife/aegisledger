@@ -1,0 +1,5 @@
+{
+  "expense_categories": ["Food", "Transport", "Utilities", "Entertainment", "Other"],
+  "income_categories": ["Salary", "Freelance", "Other"],
+  "transaction_types": ["Income", "Expense"]
+}

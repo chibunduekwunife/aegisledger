@@ -9,7 +9,7 @@ export const testTransactions: Transaction[] = [
     amount: -54.99,
     category: "Food",
     date: "05/25/2025",
-    note: "Weekly supermarket run"
+    notes: "Weekly supermarket run"
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ export const testTransactions: Transaction[] = [
     amount: 2500,
     category: "Income",
     date: "05/24/2025",
-    note: "Monthly paycheck"
+    notes: "Monthly paycheck"
   },
   {
     id: 3,
@@ -25,7 +25,7 @@ export const testTransactions: Transaction[] = [
     amount: -40,
     category: "Health",
     date: "05/20/2025",
-    note: "Monthly subscription"
+    notes: "Monthly subscription"
   },
   {
     id: 4,
@@ -33,7 +33,7 @@ export const testTransactions: Transaction[] = [
     amount: -120.5,
     category: "Utilities",
     date: "05/18/2025",
-    note: "May bill"
+    notes: "May bill"
   },
   {
     id: 5,
@@ -41,7 +41,7 @@ export const testTransactions: Transaction[] = [
     amount: -3.75,
     category: "Food",
     date: "05/26/2025",
-    note: "Morning coffee"
+    notes: "Morning coffee"
   },
   {
     id: 6,
@@ -49,7 +49,7 @@ export const testTransactions: Transaction[] = [
     amount: -60,
     category: "Utilities",
     date: "05/15/2025",
-    note: "Monthly internet"
+    notes: "Monthly internet"
   },
   {
     id: 7,
@@ -57,7 +57,7 @@ export const testTransactions: Transaction[] = [
     amount: -18.99,
     category: "Education",
     date: "05/14/2025",
-    note: "Bought a programming book"
+    notes: "Bought a programming book"
   },
   {
     id: 8,
@@ -65,7 +65,7 @@ export const testTransactions: Transaction[] = [
     amount: 500,
     category: "Income",
     date: "05/12/2025",
-    note: "Website development"
+    notes: "Website development"
   },
   {
     id: 9,
@@ -73,7 +73,7 @@ export const testTransactions: Transaction[] = [
     amount: -45.5,
     category: "Food",
     date: "05/10/2025",
-    note: "Dinner with friends"
+    notes: "Dinner with friends"
   },
   {
     id: 10,
@@ -81,7 +81,7 @@ export const testTransactions: Transaction[] = [
     amount: -12,
     category: "Entertainment",
     date: "05/09/2025",
-    note: "Weekend movie"
+    notes: "Weekend movie"
   }
 ];
 

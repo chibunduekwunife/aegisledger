@@ -44,6 +44,7 @@ export default function PricingSection() {
             <CardTitle>{tier.title}</CardTitle>
             <CardDescription>{tier.description}</CardDescription>
           </CardHeader>
+          <div className="border-b-2"></div>
           <CardContent className="flex flex-col flex-1 items-center justify-center gap-4">
             <div className="flex items-baseline justify-center gap-1">
               <h1 className="text-4xl font-bold">{`$${tier.price}`}</h1>

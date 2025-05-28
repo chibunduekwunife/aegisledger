@@ -1,13 +1,19 @@
-export const transaction_categories = [
-    {id: 1, name: "Food", value: "Food"},
-    {id: 2, name: "Transport", value: "Transport"},
-    {id: 3, name: "Utilities", value: "Utilities"},
-    {id: 4, name: "Entertainment", value: "Entertainment"},
-    {id: 5, name: "Other", value: "Other"},
-]
+import choices from "../../shared/choices.json";
 
-export const income_categories = [
-    {id: 1, name: "Salary", value: "Salary"},
-    {id: 2, name: "Freelance", value: "Freelance"},
-    {id: 3, name: "Other", value: "Other"},
-]
+export const expense_categories = (choices.expense_categories as string[]).map((name: string, idx: number) => ({
+  id: idx + 1,
+  name,
+  value: name,
+}));
+
+export const income_categories = (choices.income_categories as string[]).map((name: string, idx: number) => ({
+  id: idx + 1,
+  name,
+  value: name,
+}));
+
+export const transaction_types = (choices.transaction_types as string[]).map((name: string, idx: number) => ({
+  id: idx + 1,
+  name,
+  value: name,
+}));
