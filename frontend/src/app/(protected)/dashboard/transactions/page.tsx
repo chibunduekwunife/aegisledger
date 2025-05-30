@@ -19,6 +19,11 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import clsx from "clsx";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { CirclePlusIcon } from "lucide-react";
+import TransactionsDisplay from "../components/transactions-display";
+import { getTransactions } from "@/lib/utils";
 
 type Transaction = {
   id: string | number;
@@ -35,44 +40,23 @@ export default function TransactionsPage() {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
 
   useEffect(() => {
-    getTransactions();
+    getTransactions(setTransactions);
   }, []);
 
-  const getTransactions = () => {
-    api
-      .get("/api/transactions/")
-      .then((res) => res.data)
-      .then((data) => {
-        setTransactions(data);
-        console.log(data);
-      })
-      .catch((err) => {
-        toast("Uh oh! Something went wrong.", {
-          description: String(err),
-        });
-      });
-  };
+  //how to use the deleteTransaction function from utils.ts
 
-  const deleteTransaction = (id: string | number) => {
-    api
-      .delete(`/api/transactions/delete/${id}/`)
-      .then((res) => {
-        if (res.status === 204) {
-          toast("Transaction deleted!");
-          setTransactions((prev) =>
-            prev.filter((txn: { id: string | number }) => txn.id !== id)
-          );
-        } else {
-          toast("Failed to delete transaction");
-        }
-      })
-      .catch((err) => {
-        // console.error("Backend error:", err?.response?.data);
-        toast("Uh oh! Something went wrong.", {
-          description: String(err),
-        });
-      });
-  };
+  // const handleDelete = (id: string | number) => {
+  //   deleteTransaction(id, () =>
+  //     setTransactions((prev) => prev.filter((txn) => txn.id !== id))
+  //   );
+  // };
+
+  // // ...
+
+  // <TransactionsDisplay
+  //   transactions={transactions}
+  //   // Pass handleDelete to your child if needed
+  // />;
 
   return (
     <div className="p-5">
@@ -89,36 +73,22 @@ export default function TransactionsPage() {
           </BreadcrumbList>
         </Breadcrumb>
       </div>
-      <h1 className="mb-5">View All Transactions</h1>
-      <div className="flex flex-col gap-3">
-        {transactions.map((txn) => (
-          <Card key={txn.id}>
-            <div className="flex justify-between items-center">
-              <div>
-                <CardHeader>
-                  <CardTitle>{txn.name}</CardTitle>
-                  <CardDescription>
-                    {txn.type}: {txn.category}
-                  </CardDescription>
-                </CardHeader>
-              </div>
-              <div>
-                <CardContent>
-                  <p
-                    className={clsx(
-                      "text-end",
-                      txn.type === "Income" ? "text-income" : "text-expense"
-                    )}
-                  >
-                    {`$${txn.amount}`}
-                  </p>
-                  <CardDescription>{`Date: ${txn.date}`}</CardDescription>
-                </CardContent>
-              </div>
+      <TransactionsDisplay
+        transactions={transactions}
+        header={
+          <div className="flex items-center justify-between">
+            <h1 className="text-xl font-bold">All Transactions</h1>
+            <div>
+              <Button asChild>
+                <Link href="/dashboard/transactions/add-transaction">
+                  <CirclePlusIcon />
+                  Add Transaction
+                </Link>
+              </Button>
             </div>
-          </Card>
-        ))}
-      </div>
+          </div>
+        }
+      />
     </div>
   );
 }
