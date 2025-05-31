@@ -1,6 +1,4 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { DataTestComponent } from "./data-test";
-import { DataTestTwoComponent } from "./data-test2";
 
 export default function DataSection() {
   return (
@@ -11,7 +9,7 @@ export default function DataSection() {
           <CardDescription>Monitor spending habits</CardDescription>
         </CardHeader>
         <CardContent>
-            <DataTestComponent/>
+            {/* <DataTestComponent/> */}
         </CardContent>
       </Card>
       <Card>
@@ -20,7 +18,7 @@ export default function DataSection() {
           <CardDescription>Monitor spending habits</CardDescription>
         </CardHeader>
         <CardContent>
-            <DataTestTwoComponent />
+            {/* <DataTestTwoComponent /> */}
         </CardContent>
       </Card>
     </div>

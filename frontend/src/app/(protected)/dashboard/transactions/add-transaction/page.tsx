@@ -21,25 +21,26 @@ export default function AddTransactionPage() {
     name: string;
     amount: number;
     category: string;
+    type: string;
     date: Date;
-    notes: string;
+    notes?: string;
   }) => {
     api
       .post("/api/transactions/", {
         ...data,
+        notes: data.notes ?? "",
         date: data.date.toISOString().split("T")[0], // ensure date is string
       })
       .then((res) => {
         if (res.status === 201) {
           toast("Transaction created!");
-          console.log(res)
           router.replace("/dashboard/transactions");
         } else {
           toast("Failed to create transaction");
         }
       })
       .catch((err) => {
-        console.error("Backend error:", err?.response?.data);
+        // console.error("Backend error:", err?.response?.data);
         toast("Uh oh! Something went wrong.", {
           description: String(err),
         });

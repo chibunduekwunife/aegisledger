@@ -69,7 +69,7 @@ const formSchema = z.object({
   }),
   notes: z.string().max(150, {
     message: "transaction note cannot exceed 150 characters.",
-  }),
+  }).optional().or(z.literal("")),
 });
 
 interface TransactionFormProps {

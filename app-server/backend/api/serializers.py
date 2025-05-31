@@ -16,6 +16,7 @@ class UserSerializer(serializers.ModelSerializer):
         return user
     
 class TransactionSerializer(serializers.ModelSerializer):
+    notes = serializers.CharField(required=False, allow_blank=True)
     class Meta:
         model = Transaction
         fields = [
