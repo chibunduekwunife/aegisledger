@@ -34,11 +34,18 @@ class TransactionDelete(generics.DestroyAPIView):
         user = self.request.user
         return Transaction.objects.filter(author=user)
 
+# View: Update Transaction
+class TransactionRetrieveUpdate(generics.RetrieveUpdateAPIView):
+    serializer_class = TransactionSerializer
+    queryset = Transaction.objects.all()
+    permission_classes = [IsAuthenticated]
+
 # View: Create User
 class CreateUserView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
+
 
 # View: Get User
 

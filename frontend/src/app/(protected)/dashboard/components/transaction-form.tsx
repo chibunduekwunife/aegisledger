@@ -27,6 +27,8 @@ import {
 } from "@/components/ui/card";
 import {
   CalendarIcon,
+  Delete,
+  DeleteIcon,
   EditIcon,
   PlusCircleIcon,
   SaveAllIcon,
@@ -67,21 +69,29 @@ const formSchema = z.object({
   date: z.date({
     required_error: "Please select the date of the transaction.",
   }),
-  notes: z.string().max(150, {
-    message: "transaction note cannot exceed 150 characters.",
-  }).optional().or(z.literal("")),
+  notes: z
+    .string()
+    .max(150, {
+      message: "transaction note cannot exceed 150 characters.",
+    })
+    .optional()
+    .or(z.literal("")),
 });
 
 interface TransactionFormProps {
   method: string;
   onSubmit: (data: z.infer<typeof formSchema>) => void;
   defaultValues?: Partial<z.infer<typeof formSchema>>;
+  transactionId?: number;
+  onDelete?: () => void;
 }
 
 export default function TransactionForm({
   method,
   onSubmit,
   defaultValues,
+  transactionId,
+  onDelete
 }: TransactionFormProps) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -280,10 +290,20 @@ export default function TransactionForm({
                 Add Transaction
               </Button>
             ) : (
-              <Button type="submit">
-                <EditIcon />
-                Edit Transaction
-              </Button>
+              <div className="flex items-center justify-center md:justify-start gap-2">
+                <Button type="submit">
+                  <EditIcon />
+                  Edit Transaction
+                </Button>
+                <Button 
+                  className="bg-red-700 hover:bg-red-800" 
+                  type="button" 
+                  onClick={onDelete}
+                >
+                    <DeleteIcon />
+                    Delete Transaction
+                </Button>
+              </div>
             )}
           </form>
         </Form>

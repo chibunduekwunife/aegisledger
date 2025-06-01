@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/card";
 import type { Transaction } from "@/lib/types";
 import clsx from "clsx";
+import Link from "next/link";
 
 interface TransactionsSectionProps {
   transactions: Transaction[];
@@ -32,33 +33,37 @@ export default function TransactionsDisplay({
           <div>
             <div className="flex flex-col gap-3">
               {displayTxns.map((txn) => (
-                <Card key={txn.id}>
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <CardHeader>
-                        <CardTitle>{txn.name}</CardTitle>
-                        <CardDescription>
-                          {txn.type}: {txn.category}
-                        </CardDescription>
-                      </CardHeader>
+                <Link 
+                key={txn.id}
+                href={`/dashboard/transactions/edit-transaction/${txn.id}`}>
+                  <Card>
+                    <div className="flex justify-between items-center">
+                      <div>
+                        <CardHeader>
+                          <CardTitle>{txn.name}</CardTitle>
+                          <CardDescription>
+                            {txn.type}: {txn.category}
+                          </CardDescription>
+                        </CardHeader>
+                      </div>
+                      <div>
+                        <CardContent>
+                          <p
+                            className={clsx(
+                              "text-end",
+                              txn.type === "Income"
+                                ? "text-income"
+                                : "text-expense"
+                            )}
+                          >
+                            {`$${txn.amount}`}
+                          </p>
+                          <CardDescription>{`Date: ${txn.date}`}</CardDescription>
+                        </CardContent>
+                      </div>
                     </div>
-                    <div>
-                      <CardContent>
-                        <p
-                          className={clsx(
-                            "text-end",
-                            txn.type === "Income"
-                              ? "text-income"
-                              : "text-expense"
-                          )}
-                        >
-                          {`$${txn.amount}`}
-                        </p>
-                        <CardDescription>{`Date: ${txn.date}`}</CardDescription>
-                      </CardContent>
-                    </div>
-                  </div>
-                </Card>
+                  </Card>
+                </Link>
               ))}
             </div>
           </div>
@@ -68,9 +73,7 @@ export default function TransactionsDisplay({
           </h1>
         )}
       </CardContent>
-      <CardFooter>
-        {footer}
-      </CardFooter>
+      <CardFooter>{footer}</CardFooter>
     </Card>
   );
 }

@@ -24,6 +24,14 @@ import Link from "next/link";
 import { CirclePlusIcon } from "lucide-react";
 import TransactionsDisplay from "../components/transactions-display";
 import { getTransactions } from "@/lib/utils";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { SelectGroup, SelectLabel } from "@radix-ui/react-select";
 
 type Transaction = {
   id: string | number;
@@ -38,6 +46,7 @@ type Transaction = {
 
 export default function TransactionsPage() {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const [sortBy, setSortBy] = useState<"date" | "amount" | "type" | "expense" | "income">("date");
 
   useEffect(() => {
     getTransactions(setTransactions);
@@ -58,6 +67,19 @@ export default function TransactionsPage() {
   //   // Pass handleDelete to your child if needed
   // />;
 
+  const sortedTransactions = [...transactions].sort((a, b) => {
+    if (sortBy === "date") {
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
+    }
+    if (sortBy === "amount") {
+      return b.amount - a.amount;
+    }
+    if (sortBy === "type") {
+      return a.type.localeCompare(b.type);
+    }
+    return 0;
+  });
+
   return (
     <div className="p-5">
       <div className="mb-5">
@@ -74,11 +96,28 @@ export default function TransactionsPage() {
         </Breadcrumb>
       </div>
       <TransactionsDisplay
-        transactions={transactions}
+        transactions={sortedTransactions}
         header={
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-y-3">
             <h1 className="text-xl font-bold">All Transactions</h1>
-            <div>
+            <div className="flex gap-2">
+              <Select
+                value={sortBy}
+                onValueChange={(value) =>
+                  setSortBy(value as "date" | "amount" | "type" | "expense" | "income")
+                }
+              >
+                <SelectTrigger className="w-[200px]">
+                  <SelectValue placeholder="Sort By..." />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="date">Date</SelectItem>
+                  <SelectItem value="amount">Amount</SelectItem>
+                  <SelectItem value="type">Type</SelectItem>
+                  <SelectItem value="Income">Income</SelectItem>
+                  <SelectItem value="expense">Expense</SelectItem>
+                </SelectContent>
+              </Select>
               <Button asChild>
                 <Link href="/dashboard/transactions/add-transaction">
                   <CirclePlusIcon />
