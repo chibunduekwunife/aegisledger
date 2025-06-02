@@ -7,6 +7,7 @@ import { REFRESH_TOKEN, ACCESS_TOKEN } from "@/constants";
 import { useState, useEffect } from "react";
 import { Navbar } from "./layout/navbar";
 import { fetchUserInfo } from "@/api/user";
+import { LoadingIndicator } from "./loading-indicator";
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -91,7 +92,7 @@ export default function ProtectedRoute({
   };
 
   if (isProtected && isAuthorized === null) {
-    return <div>Loading...</div>;
+    return <LoadingIndicator />;
   }
 
   if (isProtected && !isAuthorized) {

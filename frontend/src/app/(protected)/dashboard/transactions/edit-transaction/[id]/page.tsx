@@ -16,6 +16,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { LoadingIndicator } from "@/components/loading-indicator";
 
 export default function EditTransactionsPage() {
   const router = useRouter();
@@ -62,7 +63,7 @@ export default function EditTransactionsPage() {
       });
   };
 
-  if (!transaction) return <div>Loading...</div>;
+  if (!transaction) return <LoadingIndicator />;
 
   return (
     <div className="p-5">

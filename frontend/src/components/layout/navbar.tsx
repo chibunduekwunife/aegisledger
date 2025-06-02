@@ -29,9 +29,12 @@ export function Navbar({ isAuthorized, username }: NavbarProps) {
             <AegisLogo link={isAuthorized ? '/dashboard' : '/'} size={2} />
             {isAuthorized ? (
                 <div className='flex gap-5 items-center'>
-                    <p className='hidden md:flex'>
-                        {username}
-                    </p>
+                    <Link
+                        href={'/account'}>
+                        <p className='hidden md:flex'>
+                            {username}
+                        </p>
+                    </Link>
                     <Button
                         onClick={handleLogout}>
                         Logout

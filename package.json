@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "daisyui": "^5.0.43",
     "recharts": "^2.15.3"
   }
 }
