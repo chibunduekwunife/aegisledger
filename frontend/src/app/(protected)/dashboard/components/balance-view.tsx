@@ -12,13 +12,11 @@ import { getTransactionsPromise } from "@/lib/utils";
 import { Transaction } from "@/lib/types";
 
 export default function BalancesSection() {
-  // get rid of seed data and functions
+
   const [username, setUsername] = useState<string>("");
   const [transactions, setTransactions] = useState<Transaction[]>([]);
 
-  // Fetch user info on mount
   useEffect(() => {
-    //if user is authenticated
     fetchUserInfo().then((user) => {
       if (user && user.username) {
         setUsername(user.username);
