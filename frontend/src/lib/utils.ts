@@ -25,7 +25,7 @@ export function getTransactions(setTransactions: (txns: Transaction[]) => void) 
 export async function getTransactionsPromise(): Promise<Transaction[]> {
   try {
     const res = await api.get("/api/transactions/");
-    return res.data;
+    return Array.isArray(res.data) ? res.data : res.data.results;
   } catch (err) {
     toast("Uh oh! Something went wrong.", {
       description: String(err),

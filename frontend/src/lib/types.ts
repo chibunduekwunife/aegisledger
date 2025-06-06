@@ -1,3 +1,9 @@
+export type ChartDatum = {
+  month: string;
+  income: number;
+  expense: number;
+};
+
 export type Transaction = {
     id: string | number;
     name: string;

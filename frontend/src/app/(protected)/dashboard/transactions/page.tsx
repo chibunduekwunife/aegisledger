@@ -46,39 +46,29 @@ type Transaction = {
 
 export default function TransactionsPage() {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
-  const [sortBy, setSortBy] = useState<"date" | "amount" | "type" | "expense" | "income">("date");
+  const [sortBy, setSortBy] = useState<
+    "date" | "amount" | "expense" | "income"
+  >("date");
 
   useEffect(() => {
     getTransactions(setTransactions);
   }, []);
 
-  //how to use the deleteTransaction function from utils.ts
+  let filteredTransactions = [...transactions];
 
-  // const handleDelete = (id: string | number) => {
-  //   deleteTransaction(id, () =>
-  //     setTransactions((prev) => prev.filter((txn) => txn.id !== id))
-  //   );
-  // };
+  if (sortBy === "income" || sortBy === "expense") {
+    filteredTransactions = filteredTransactions.filter(
+      (txn) => txn.type.toLowerCase() === sortBy
+    );
+  }
 
-  // // ...
-
-  // <TransactionsDisplay
-  //   transactions={transactions}
-  //   // Pass handleDelete to your child if needed
-  // />;
-
-  const sortedTransactions = [...transactions].sort((a, b) => {
-    if (sortBy === "date") {
-      return new Date(b.date).getTime() - new Date(a.date).getTime();
-    }
-    if (sortBy === "amount") {
-      return b.amount - a.amount;
-    }
-    if (sortBy === "type") {
-      return a.type.localeCompare(b.type);
-    }
-    return 0;
-  });
+  if (sortBy === "date") {
+    filteredTransactions.sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
+  } else if (sortBy === "amount") {
+    filteredTransactions.sort((a, b) => b.amount - a.amount)
+  }
 
   return (
     <div className="p-5">
@@ -96,7 +86,7 @@ export default function TransactionsPage() {
         </Breadcrumb>
       </div>
       <TransactionsDisplay
-        transactions={sortedTransactions}
+        transactions={filteredTransactions}
         header={
           <div className="flex flex-col md:flex-row items-center justify-between gap-y-3">
             <h1 className="text-xl font-bold">All Transactions</h1>
@@ -104,17 +94,16 @@ export default function TransactionsPage() {
               <Select
                 value={sortBy}
                 onValueChange={(value) =>
-                  setSortBy(value as "date" | "amount" | "type" | "expense" | "income")
+                  setSortBy(value as "date" | "amount" | "expense" | "income")
                 }
               >
-                <SelectTrigger className="w-[200px]">
+                <SelectTrigger className="w-[180px]">
                   <SelectValue placeholder="Sort By..." />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="date">Date</SelectItem>
                   <SelectItem value="amount">Amount</SelectItem>
-                  <SelectItem value="type">Type</SelectItem>
-                  <SelectItem value="Income">Income</SelectItem>
+                  <SelectItem value="income">Income</SelectItem>
                   <SelectItem value="expense">Expense</SelectItem>
                 </SelectContent>
               </Select>
