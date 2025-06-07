@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Button, buttonVariants } from '@/components/ui/button'
 import AegisLogo from '../ui/logo'
 import { useRouter } from 'next/navigation';
+import { CustomTrigger } from '../custom-sidebar-trigger';
 
 interface NavbarProps {
     isAuthorized: boolean | null,
@@ -27,6 +28,7 @@ export function Navbar({ isAuthorized, username }: NavbarProps) {
     return (
         <nav className='flex items-center justify-between sticky top-0 p-5 bg-secondary shadow-md z-50'>
             <AegisLogo link={isAuthorized ? '/dashboard' : '/'} size={2} />
+            {/* <CustomTrigger link={isAuthorized ? '/dashboard' : '/'} size={2} /> */}
             {isAuthorized ? (
                 <div className='flex gap-5 items-center'>
                     <Link

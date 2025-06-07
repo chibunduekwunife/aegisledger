@@ -15,16 +15,17 @@ import {
 
 import {
   Bot,
-  ChartArea,
   ChevronDown,
   ChevronUp,
   Coins,
   Home,
   LifeBuoy,
   LogOut,
+  PieChart,
   PiggyBank,
   Plane,
   Search,
+  Settings,
   User,
   User2,
 } from "lucide-react";
@@ -59,12 +60,17 @@ const app_links = [
   {
     title: "Insights",
     url: "/dashboard/charts",
-    icon: ChartArea,
+    icon: PieChart,
   },
   {
     title: "Ask AI",
     url: "#",
     icon: Bot,
+  },
+  {
+    title: "Settings",
+    url: "#",
+    icon: Settings,
   },
   {
     title: "Search Transaction",
@@ -194,7 +200,7 @@ export function AppSidebar() {
                   <button
                     type="button"
                     onClick={handleLogout}
-                    className="flex gap-2 items-center w-full text-left"
+                    className="flex gap-2 items-center text-left"
                   >
                     <LogOut />
                     <span>Sign out</span>
