@@ -32,6 +32,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { SelectGroup, SelectLabel } from "@radix-ui/react-select";
+import { Input } from "@/components/ui/input";
+import Search from "@/components/search-input";
 
 type Transaction = {
   id: string | number;
@@ -88,9 +90,10 @@ export default function TransactionsPage() {
       <TransactionsDisplay
         transactions={filteredTransactions}
         header={
-          <div className="flex flex-col md:flex-row items-center justify-between gap-y-3">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-y-3">
             <h1 className="text-xl font-bold">All Transactions</h1>
-            <div className="flex gap-2">
+            <div className="flex gap-2 items-center">
+              <Search />
               <Select
                 value={sortBy}
                 onValueChange={(value) =>
