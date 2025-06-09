@@ -101,7 +101,7 @@ export default function ProtectedRoute({
 
   return (
     <div>
-      <Navbar username={username} isAuthorized={isAuthorized} />
+      {/* <Navbar username={username} isAuthorized={isAuthorized} /> */}
       {children}
     </div>
   );

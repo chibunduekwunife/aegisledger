@@ -14,10 +14,12 @@ import {
 } from "@/components/ui/sidebar";
 
 import {
+  BanknoteIcon,
   Bot,
   ChevronDown,
   ChevronUp,
   Coins,
+  CreditCard,
   Home,
   LifeBuoy,
   LogOut,
@@ -45,6 +47,7 @@ import {
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { fetchUserInfo } from "@/api/user";
+import AegisLogo from "./logo";
 
 const app_links = [
   {
@@ -61,6 +64,11 @@ const app_links = [
     title: "Insights",
     url: "/dashboard/charts",
     icon: PieChart,
+  },
+  {
+    title: "Accounts",
+    url: "#",
+    icon: CreditCard,
   },
   {
     title: "Ask AI",
@@ -111,7 +119,12 @@ export function AppSidebar() {
   };
 
   return (
-    <Sidebar className="pt-20">
+    <Sidebar>
+      <div className="flex p-4 h-[120px] items-end border-b" style={{
+        background: "var(--sidebar)"
+      }}>
+        <AegisLogo size={2} link="/dashboard"/>
+      </div>
       <SidebarHeader />
       <SidebarContent>
         <Collapsible defaultOpen className="group/collapsible">
@@ -170,7 +183,7 @@ export function AppSidebar() {
       </SidebarContent>
 
       {/* footer */}
-      <SidebarFooter>
+      <SidebarFooter className="border-t">
         <SidebarMenu>
           <SidebarMenuItem>
             <DropdownMenu>
