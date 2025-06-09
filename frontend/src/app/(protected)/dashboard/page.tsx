@@ -1,12 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import api from "@/api";
 import BalancesSection from "./components/balance-view";
 import DataSection from "./components/data-view";
-import { toast } from "sonner";
 import TransactionsDisplay from "./components/transactions-display";
-import { CardFooter, CardTitle } from "@/components/ui/card";
+import { CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { Transaction } from "@/lib/types";

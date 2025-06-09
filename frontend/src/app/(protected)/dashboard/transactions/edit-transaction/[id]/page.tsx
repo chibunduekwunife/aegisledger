@@ -16,7 +16,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { LoadingIndicator } from "@/components/loading-indicator";
+import { LoadingIndicator } from "@/components/widgets/loading-indicator";
 
 export default function EditTransactionsPage() {
   const router = useRouter();

@@ -8,21 +8,11 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import api from "@/api";
 import { useEffect, useState } from "react";
-import { toast } from "sonner";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import clsx from "clsx";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { CirclePlusIcon } from "lucide-react";
-import TransactionsDisplay from "../components/transactions-display";
+import { TransactionsSpreadSheet } from "../components/transactions-display";
 import { getTransactions } from "@/lib/utils";
 import {
   Select,
@@ -31,9 +21,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { SelectGroup, SelectLabel } from "@radix-ui/react-select";
-import { Input } from "@/components/ui/input";
-import Search from "@/components/search-input";
+import Search from "@/components/widgets/search-input";
 
 type Transaction = {
   id: string | number;
@@ -51,6 +39,7 @@ export default function TransactionsPage() {
   const [sortBy, setSortBy] = useState<
     "date" | "amount" | "expense" | "income"
   >("date");
+  const [search, setSearch] = useState<String>("");
 
   useEffect(() => {
     getTransactions(setTransactions);
@@ -72,6 +61,15 @@ export default function TransactionsPage() {
     filteredTransactions.sort((a, b) => b.amount - a.amount)
   }
 
+  if (search) {
+  filteredTransactions = filteredTransactions.filter(
+    (txn) =>
+      txn.name.toLowerCase().includes(search.toLowerCase()) ||
+      txn.category.toLowerCase().includes(search.toLowerCase()) ||
+      txn.notes.toLowerCase().includes(search.toLowerCase())
+  );
+}
+
   return (
     <div className="p-5">
       <div className="mb-5">
@@ -87,13 +85,13 @@ export default function TransactionsPage() {
           </BreadcrumbList>
         </Breadcrumb>
       </div>
-      <TransactionsDisplay
+      <TransactionsSpreadSheet
         transactions={filteredTransactions}
         header={
           <div className="flex flex-col lg:flex-row items-center justify-between gap-y-3">
             <h1 className="text-xl font-bold">All Transactions</h1>
             <div className="flex gap-2 items-center">
-              <Search />
+              <Search onValueChange={(e) => setSearch(e.target.value)} />
               <Select
                 value={sortBy}
                 onValueChange={(value) =>

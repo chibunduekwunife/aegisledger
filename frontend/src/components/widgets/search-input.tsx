@@ -1,6 +1,12 @@
-import { Label } from "./ui/label";
+import { Label } from "../ui/label";
 
-export default function Search() {
+import React from "react";
+
+interface SearchProps {
+  onValueChange: React.ChangeEventHandler<HTMLInputElement>;
+}
+
+export default function Search({ onValueChange }: SearchProps) {
   return (
     <Label className="input border h-9 rounded border-gray-300">
       <svg
@@ -19,7 +25,7 @@ export default function Search() {
           <path d="m21 21-4.3-4.3"></path>
         </g>
       </svg>
-      <input type="search" required placeholder="Search" />
+      <input type="search" onChange={onValueChange} required placeholder="Search" />
     </Label>
   );
 }

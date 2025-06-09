@@ -1,9 +1,9 @@
 "use client"
-import ProtectedRoute from "@/components/protected-route";
+import ProtectedRoute from "@/components/layout/protected-route";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from '@/components/ui/app-sidebar'
 import { useState } from "react";
-import { CustomTrigger } from "@/components/custom-sidebar-trigger";
+import { CustomTrigger } from "@/components/widgets/custom-sidebar-trigger";
 
 export default function DashboardProtectedLayout({ children }: { children: React.ReactNode }) {
 

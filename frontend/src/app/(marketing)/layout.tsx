@@ -1,5 +1,5 @@
 
-import ProtectedRoute from "@/components/protected-route";
+import ProtectedRoute from "@/components/layout/protected-route";
 
 export default function MarketingLayout({ children }: { children: React.ReactNode }) {
 

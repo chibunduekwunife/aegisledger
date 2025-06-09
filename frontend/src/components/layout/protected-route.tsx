@@ -5,9 +5,9 @@ import { jwtDecode } from "jwt-decode";
 import api from "@/api";
 import { REFRESH_TOKEN, ACCESS_TOKEN } from "@/constants";
 import { useState, useEffect } from "react";
-import { Navbar } from "./layout/navbar";
+import { Navbar } from "./navbar";
 import { fetchUserInfo } from "@/api/user";
-import { LoadingIndicator } from "./loading-indicator";
+import { LoadingIndicator } from "../widgets/loading-indicator";
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -101,7 +101,7 @@ export default function ProtectedRoute({
 
   return (
     <div>
-      {/* <Navbar username={username} isAuthorized={isAuthorized} /> */}
+      {!isProtected && <Navbar username={username} isAuthorized={isAuthorized} />}
       {children}
     </div>
   );

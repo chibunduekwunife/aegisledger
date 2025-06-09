@@ -1,5 +1,5 @@
-import { useSidebar } from "./ui/sidebar";
-import { Button } from "./ui/button";
+import { useSidebar } from "../ui/sidebar";
+import { Button } from "../ui/button";
 import { PanelLeftCloseIcon, PanelLeftOpenIcon } from "lucide-react";
 
 interface CustomTriggerProps {
@@ -13,8 +13,8 @@ export function CustomTrigger({ isOpen }: CustomTriggerProps) {
         <Button
             variant="outline"
             onClick={toggleSidebar}>
-                { isOpen ? <PanelLeftCloseIcon /> : <PanelLeftOpenIcon />}
-                { isOpen ? 'Close Sidebar' : 'Open Sidebar'}
+                { isOpen ? <PanelLeftCloseIcon /> : <PanelLeftOpenIcon /> }
+                { isOpen ? 'Close Sidebar' : 'Open Sidebar' }
         </Button>
     )
 }

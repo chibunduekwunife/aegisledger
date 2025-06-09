@@ -1,6 +1,6 @@
 "use client"
 
-import { LoadingIndicator } from "@/components/loading-indicator";
+import { LoadingIndicator } from "@/components/widgets/loading-indicator";
 import { 
     Card, 
     CardContent, 

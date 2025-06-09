@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { Button, buttonVariants } from '@/components/ui/button'
 import AegisLogo from '../ui/logo'
 import { useRouter } from 'next/navigation';
-import { CustomTrigger } from '../custom-sidebar-trigger';
+import { CustomTrigger } from '../widgets/custom-sidebar-trigger';
 
 interface NavbarProps {
     isAuthorized: boolean | null,
