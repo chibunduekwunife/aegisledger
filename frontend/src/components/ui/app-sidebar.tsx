@@ -14,12 +14,15 @@ import {
 } from "@/components/ui/sidebar";
 
 import {
+  ArrowRightLeft,
   BanknoteIcon,
   Bot,
   ChevronDown,
   ChevronUp,
   Coins,
   CreditCard,
+  Handshake,
+  HandshakeIcon,
   Home,
   LifeBuoy,
   LogOut,
@@ -58,7 +61,7 @@ const app_links = [
   {
     title: "Transactions",
     url: "/dashboard/transactions",
-    icon: PiggyBank,
+    icon: ArrowRightLeft,
   },
   {
     title: "Insights",
@@ -69,6 +72,11 @@ const app_links = [
     title: "Accounts",
     url: "#",
     icon: CreditCard,
+  },
+  {
+    title: "Budgets",
+    url: "#",
+    icon: PiggyBank,
   },
   {
     title: "Ask AI",
