@@ -29,6 +29,8 @@ import {
   PieChart,
   PiggyBank,
   Plane,
+  Plus,
+  PlusCircle,
   Search,
   Settings,
   User,
@@ -64,6 +66,11 @@ const app_links = [
     icon: ArrowRightLeft,
   },
   {
+    title: "Add Transaction",
+    url: "/dashboard/transactions/add-transaction",
+    icon: PlusCircle,
+  },
+  {
     title: "Insights",
     url: "/dashboard/charts",
     icon: PieChart,
@@ -87,11 +94,6 @@ const app_links = [
     title: "Settings",
     url: "#",
     icon: Settings,
-  },
-  {
-    title: "Search Transaction",
-    url: "#",
-    icon: Search,
   },
 ];
 
