@@ -95,7 +95,7 @@ export const TransactionsSpreadSheet = ({
         {displayTxns.length > 0 ? (
           <div>
             {/* Grid Heading */}
-            <div className="grid grid-cols-[1.5fr_2.5fr_1fr_1fr] md:grid-cols-[1fr_2fr_3fr_1fr_1fr] items-stretch font-semibold bg-sidebar text-white text-sm border-b mb-2">
+            <div className="grid grid-cols-[1.5fr_2.5fr_1fr_1fr] md:grid-cols-[1fr_2fr_3fr_1fr_1fr] items-stretch font-semibold bg-sidebar text-white text-sm border-b">
               <span className="py-2 px-2 md:px-4 border-r">Date</span>
               <span className="py-2 px-2 md:px-4 border-r">Name</span>
               <span className="hidden md:inline py-2 px-2 md:px-4 border-r">
@@ -106,7 +106,7 @@ export const TransactionsSpreadSheet = ({
               </span>
               <span className="py-2 px-2 md:px-4 text-center">Expense</span>
             </div>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col">
               {displayTxns.map((txn, idx) => (
                 <Link
                   key={txn.id}

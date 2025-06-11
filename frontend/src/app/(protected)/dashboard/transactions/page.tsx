@@ -89,7 +89,7 @@ export default function TransactionsPage() {
         transactions={filteredTransactions}
         header={
           <div className="flex flex-col lg:flex-row items-center justify-between gap-y-3">
-            <h1 className="text-xl font-bold">All Transactions</h1>
+            <h1 className="text-xl font-bold">All Transactions ({transactions.length})</h1>
             <div className="flex gap-2 items-center">
               <Search onValueChange={(e) => setSearch(e.target.value)} />
               <Select
