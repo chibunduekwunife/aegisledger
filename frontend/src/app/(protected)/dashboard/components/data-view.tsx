@@ -45,7 +45,7 @@ export default function DataSection() {
         <div className="flex items-center justify-between">
           <CardTitle className="text-gray-500">Spending Trends</CardTitle>
           <Link
-            href="/dashboard/charts"
+            href="/dashboard/insights"
             className={buttonVariants({ variant: "link" })}
           >
             View All

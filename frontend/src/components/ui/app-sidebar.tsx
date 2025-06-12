@@ -72,7 +72,7 @@ const app_links = [
   },
   {
     title: "Insights",
-    url: "/dashboard/charts",
+    url: "/dashboard/insights",
     icon: PieChart,
   },
   {

@@ -49,6 +49,7 @@ import {
 import { cn } from "@/lib/utils";
 import { Calendar } from "@/components/ui/calendar";
 import { Textarea } from "@/components/ui/textarea";
+import { useEffect } from "react";
 
 const formSchema = z.object({
   name: z
@@ -105,6 +106,15 @@ export default function TransactionForm({
     },
   });
 
+  // Ensure amount is always a number in form state
+  useEffect(() => {
+    const value = form.getValues("amount");
+    if (typeof value === "string" && value !== "") {
+      const num = Number(value);
+      if (!isNaN(num)) form.setValue("amount", num);
+    }
+  }, [form]);
+
   const typeValue = form.watch("type");
 
   return (
@@ -155,8 +165,24 @@ export default function TransactionForm({
                       <Input
                         type="number"
                         placeholder="Enter a transaction amount"
-                        {...field}
-                        onChange={(e) => {
+                        value={field.value === undefined || field.value === null ? "" : String(field.value)}
+                        onFocus={e => {
+                          if (e.target.value === "0") {
+                            e.target.value = "";
+                            field.onChange("");
+                          }
+                        }}
+                        onBlur={e => {
+                          if (e.target.value === "") {
+                            e.target.value = "0";
+                            field.onChange(0);
+                          } else if (typeof field.value === "string") {
+                            // If value is string, convert to number on blur
+                            const num = Number(field.value);
+                            if (!isNaN(num)) field.onChange(num);
+                          }
+                        }}
+                        onChange={e => {
                           field.onChange(
                             e.target.value === "" ? "" : Number(e.target.value)
                           );
